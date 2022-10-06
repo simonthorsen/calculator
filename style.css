@@ -1,0 +1,133 @@
+*, *::before, *::after{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+
+body{
+    background: linear-gradient(to right, red, orange);
+}
+
+#btn{
+    background-color: transparent;
+    padding: 5px;
+    position: relative;
+    color: white;
+    border-radius: 20px;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+#btn:hover{
+    background-color: rgba(255, 255, 255, 0.2);
+    top: -5px;
+}
+
+.header{
+    width: 100%;
+    height: 100px;
+    background-color:rgba(55, 55, 55, 0.75);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;;
+}
+
+#hometext{
+    font-size: 45px;
+    position: relative;
+    margin-left: 5px;
+    text-shadow: 5px 2px 5px black;
+}
+
+a{
+    color: white;
+    text-decoration: none;
+}
+
+.header .headerbuttons{
+    background-color: transparent;
+    padding: 7px;
+    border-radius: 20px;
+    margin: 5px;
+    position: relative;
+    margin-right: 30px;
+}
+
+.headerbuttons:hover{
+    background-color: rgba(255, 255, 255, 0.2);
+    top: -5px;
+}
+
+.header h1{
+    font-size: 45px;
+    margin-left: 20px;
+    color: white;
+    text-shadow: 5px 5px 5px black;
+   
+}
+
+.calculator-grid{
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    margin-top: 7%;
+    grid-template-columns: repeat(4, 75px);
+    grid-template-rows: minmax(75px, 75px), repeat(5, 75px);
+}
+
+#date{
+    position: absolute;
+    top: 98%;
+    margin-left: 87%;
+    color: white;
+    text-shadow: 5px 2px 5px black;
+}
+.calculator-grid > .button {
+    cursor: pointer;
+    font-size: 1.35rem;
+    border: 1px solid white;
+    outline: none;
+    width: 75px;
+    height: 75px;
+    background-color: rgba(255,255,255, 0.5);
+}
+
+.calculator-grid > button:hover {
+    background-color: rgba(255, 255, 255, 0.66);
+}
+
+#display{
+    grid-column: 1 / -2;
+    background-color: rgba(55, 55, 55, 0.75);
+    width: 300px;
+    height: 100px;
+    display: flex;
+    font-size: 25px;
+    color:white;
+    text-align: center;
+    align-content: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 10px;
+    cursor:text;
+}
+
+.button:hover{
+    background-color: rgba(255, 255, 255, 0.66);
+}
+
+.button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.buttons{
+    display:absolute;
+    margin-top: 5%;
+
+}
+

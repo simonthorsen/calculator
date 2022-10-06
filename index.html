@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body id="body">
+    <section>
+        <div class="header">
+            <div class="h1"><h1 style="color: red" id="hometext">Calculator</h1>
+            <button onclick="redColor()" id="btn">RED</button>
+            <button onclick="blueColor()" id="btn">BLUE</button>
+            <button onclick="yellowColor()" id="btn">YELLOW</button>
+            <button onclick="greenColor()" id="btn">GREEN</button>
+            </div>
+            <div class="buttonstop">
+            <button class="headerbuttons"><a href="#">Home Page</a></button>
+            <button class="headerbuttons"><a href="#">About Us</a></button>
+            <button class="headerbuttons"><a href="#">Contact</a></button>
+            <button class="headerbuttons"><a href="#">Web Dev</a></button>
+            <button class="headerbuttons"><a href="#">Sign Up</a></button>
+        </div>
+        </div>
+        <div class="calculator-grid">
+        <div id="display"></div>
+        <button style="width:150px; grid-column: span 2;"class="button" >AC</button>
+        <div class="button">DEL</div>
+        <div class="button">/</div>
+        <div class="button">1</div>
+        <div class="button">2</div>
+        <div class="button">3</div>
+        <div class="button">*</div>
+        <div class="button">4</div>
+        <div class="button">5</div>
+        <div class="button">6</div>
+        <div class="button">+</div>
+        <div class="button">7</div>
+        <div class="button">8</div>
+        <div class="button">9</div>
+        <div class="button">-</div>
+        <div class="button">.</div>
+        <div class="button">0</div>
+        <div style="width:150px; grid-column: span 2;" class="button">=</div>
+</div>
+    <div class="buttons">
+    <p id="date"></p>
+    <button onclick="backgroundImage()"id="btn">BackgroundImage</button>
+    <button onclick="lommeRegner()" id="btn">Lommeregner DK</button>
+    <button onclick="alertAlert()" id="btn">ALERT</button>
+    <button onclick="sletSide()" id="btn">DELETE</button>
+    <button onclick="windowReplace()" id="btn">Window redirect</button>
+</div>
+
+    </section>
+
+    <script>
+        function redColor(){
+            document.getElementById("hometext").style.color = "red"; document.getElementById("body").style.background = "linear-gradient(to right, red, orange)"; //linear gradient funktion
+        }
+        function blueColor(){
+        document.getElementById("hometext").style.color = "blue"; document.getElementById("body").style.background = "linear-gradient(to right, blue, aqua)"; 
+        }
+        function yellowColor(){
+        document.getElementById("hometext").style.color = "yellow"; document.getElementById("body").style.background = "linear-gradient(to right, yellow, yellowgreen)"; 
+        }
+        function greenColor(){
+        document.getElementById("hometext").style.color = "green"; document.getElementById("body").style.background = "linear-gradient(to right, green, darkgreen)";
+        }
+        function alertAlert(){
+            alert("Alerted!"); console.log("Hej Simon :)");
+        }
+        function backgroundImage(){
+        document.getElementById("body").style.backgroundImage = "url('download.png')";
+        }
+        function lommeRegner(){
+        document.getElementById("hometext").innerHTML = "Lommeregner";
+        }
+        setInterval(dateToday, 1000); //sætter et interval på functionen
+        function dateToday(){
+            document.getElementById('date').innerHTML = Date();
+        }
+        function sletSide(){
+            document.getElementById("body").style.opacity = "0"; document.getElementById("body").style.background = "white";
+
+        }
+        //console.log(Date()) logger nuværende tidspunkt og dato og tidszone
+            if(true){
+                document.getElementById("date").innerHTML = Date();
+            }
+        function windowReplace(){
+            window.location.replace("https://www.google.dk"); //en funktion der redirecter til en url (kan ikke ses når man hover over og man kan ikke gå tilbage)
+        }
+
+        let display = document.getElementById('display'); //linker til skærmen på lommeregneren
+
+        let buttons = Array.from(document.getElementsByClassName('button')); //henter alle knapper fra class name 
+                        //Her laves et array ud fra HTML collectionen
+        buttons.map( button => {
+            button.addEventListener("click", (e) => {
+                /*console.log('clicked'); //her logges det i consollen når det klikkes
+                console.log(e);
+                console.log(e.target); //her kan bliver htmls klassen der blev trykket på defineret 
+                console.log(e.target.innerText); //her bliver selve inderteksten printet*/
+                switch(e.target.innerHTML){ //Her er html klassen først defineret vha. e.target og derefter innerHTML for at få det indre og printe det
+                    case "AC":
+                    display.innerText = "";
+                    break;
+                    case "DEL":
+                    if(display.innerText){ //Her definerer vi at der skal kun kunne slettes hvis et tal er på skærmen
+                    display.innerText = display.innerHTML.slice(0,-1); //Her definerer vi via slice at der skal slettes et tal af gangen
+                        }
+                    break; //efter vi har addet break står del/ac ikke på skærmen efter det bliver slettet
+                    case "=":
+                    try{ //her prøves der med dette statement først at evaluere via eval, catch sender advarsel hvis det ikke går
+                        display.innerText = eval(display.innerText); //eval beregner ting som var det i java efter matematikkens regler
+                    }
+                    catch{  //her vises advarslen da ** eller */ ved siden af hinanden ikke giver mening i matematikken verden
+                        display.innerText = "Error, press AC.";
+                    }
+                    break;
+                    default: //Her definerer at hver gang der trykket på en knap skal nummeret på skærmen
+                    display.innerText += e.target.innerText;
+                }
+            });
+        });
+    
+        
+
+
+
+    </script>
+    
+
+    
+    
+</body>
+</html>
